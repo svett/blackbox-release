@@ -1,0 +1,56 @@
+---
+name: blackbox 
+
+director_uuid: <%= `bosh status --uuid` %>
+
+releases:
+  - name: blackbox
+    version: latest
+
+jobs:
+  - name: blackbox 
+    instances: 1
+    resource_pool: blackbox
+    networks:
+      - name: blackbox
+        static_ips: &web-ips [10.244.8.2]
+    persistent_disk: 1024 # for consul
+    templates:
+      - {release: blackbox, name: blackbox}
+    properties:
+      blackbox:
+        expvar:
+          datadog:
+            api_key: "THE_KEY"
+          interval_in_seconds: 10
+          sources:
+            - `{ "goroutine" => { "url" => "http://10.244.16.6:17013/debug/pprof/goroutine", "tags"=> ["garden-linux:goroutine"] } }`
+
+networks:
+  - name: blackbox
+    subnets:
+      # network with static ip used for web
+      - range: 10.244.8.0/30
+        reserved: [10.244.8.1]
+        static: [10.244.8.2]
+        cloud_properties: {}
+
+resource_pools:
+  - name: blackbox 
+    network: blackbox
+    cloud_properties: {}
+    stemcell:
+      name: bosh-warden-boshlite-ubuntu-trusty-go_agent
+      version: latest
+
+compilation:
+  workers: 1
+  network: blackbox
+  cloud_properties: {}
+
+update:
+  canaries: 1
+  max_in_flight: 3
+  serial: false
+  canary_watch_time: 1000-60000
+  update_watch_time: 1000-60000
