@@ -1,0 +1,6 @@
+---
+final_name: blackbox 
+blobstore:
+  provider: s3
+  options:
+    bucket_name: concourse-blobs

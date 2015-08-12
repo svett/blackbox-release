@@ -1,0 +1,21 @@
+[submodule "src/github.com/concourse/blackbox"]
+	path = src/github.com/concourse/blackbox
+	url = git@github.com:concourse/blackbox.git
+[submodule "src/github.com/ActiveState/tail"]
+	path = src/github.com/ActiveState/tail
+	url = git@github.com:ActiveState/tail.git
+[submodule "src/github.com/howeyc/fsnotify"]
+	path = src/github.com/howeyc/fsnotify
+	url = git@github.com:howeyc/fsnotify.git
+[submodule "src/github.com/papertrail/remote_syslog2"]
+	path = src/github.com/papertrail/remote_syslog2
+	url = git@github.com:papertrail/remote_syslog2.git
+[submodule "src/github.com/tedsuo/ifrit"]
+	path = src/github.com/tedsuo/ifrit
+	url = git@github.com:tedsuo/ifrit.git
+[submodule "src/gopkg.in/tomb.v1"]
+	path = src/gopkg.in/tomb.v1
+	url = http://gopkg.in/tomb.v1
+[submodule "src/gopkg.in/yaml.v2"]
+	path = src/gopkg.in/yaml.v2
+	url = http://gopkg.in/yaml.v2/
