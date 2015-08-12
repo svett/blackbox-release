@@ -1,2 +1,2 @@
 # blackbox-release
-A BOSH release for blackbox. 
+A [BOSH](http://docs.cloudfoundry.org/bosh/) release for [blackbox](http://github.com/concourse/blackbox).
